@@ -5,10 +5,11 @@ import {computed, reactive} from 'vue'
 const form = reactive({
   milk: '0',
   cream: '0',
-  sugar: '0'
+  sugar: '0',
+  oatmilk: '0'
 })
 
-const totalCal = computed(() => (parseFloat(form.milk) * 0.66744) + (parseFloat(form.cream) * 2.92) + (parseFloat(form.sugar) * 3.87))
+const totalCal = computed(() => (parseFloat(form.oatmilk) * 0.61) + (parseFloat(form.milk) * 0.66744) + (parseFloat(form.cream) * 2.92) + (parseFloat(form.sugar) * 3.87))
 
 </script>
 
@@ -35,6 +36,15 @@ const totalCal = computed(() => (parseFloat(form.milk) * 0.66744) + (parseFloat(
           <b-form-input
             id="input-2"
             v-model="form.cream"
+            placeholder="0"
+            required
+          ></b-form-input>
+        </b-form-group>
+        
+        <b-form-group id="input-group-4" label="Oatmilk in g" label-for="input-4">
+          <b-form-input
+            id="input-4"
+            v-model="form.oatmilk"
             placeholder="0"
             required
           ></b-form-input>
