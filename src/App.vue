@@ -29,279 +29,400 @@ function resetForm() {
   form.sugar = '0'
   form.oatmilk = '0'
 }
+
+// Get current year for copyright
+const currentYear = new Date().getFullYear()
 </script>
 
 <template>
-  <div class="app-container">
-    <header class="header">
-      <h1>Coffee Calorie Calculator</h1>
-      <div class="coffee-icon">☕</div>
-    </header>
-
-    <main class="main-content">
-      <div class="card ingredients-card">
-        <h2>Your Coffee Ingredients</h2>
-        
-        <div class="form-group">
-          <label for="milk-input">
-            <span class="ingredient-name">Milk (3.5%)</span>
-            <span class="calorie-hint">{{ calories.milk }} kcal/g</span>
-          </label>
-          <div class="input-with-unit">
-            <input
-              id="milk-input"
-              v-model="form.milk"
-              type="number"
-              min="0"
-              placeholder="0"
-              class="form-input"
-            >
-            <span class="unit">g</span>
-          </div>
+  <div class="page-wrapper">
+    <div class="app-container">
+      <header class="header">
+        <div class="logo">
+          <div class="logo-icon">☕</div>
+          <h1>Coffee Calorie Calculator</h1>
         </div>
+      </header>
 
-        <div class="form-group">
-          <label for="cream-input">
-            <span class="ingredient-name">Cream (30%)</span>
-            <span class="calorie-hint">{{ calories.cream }} kcal/g</span>
-          </label>
-          <div class="input-with-unit">
-            <input
-              id="cream-input"
-              v-model="form.cream"
-              type="number"
-              min="0"
-              placeholder="0"
-              class="form-input"
-            >
-            <span class="unit">g</span>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="oatmilk-input">
-            <span class="ingredient-name">Oat Milk</span>
-            <span class="calorie-hint">{{ calories.oatmilk }} kcal/g</span>
-          </label>
-          <div class="input-with-unit">
-            <input
-              id="oatmilk-input"
-              v-model="form.oatmilk"
-              type="number"
-              min="0"
-              placeholder="0"
-              class="form-input"
-            >
-            <span class="unit">g</span>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="sugar-input">
-            <span class="ingredient-name">Sugar</span>
-            <span class="calorie-hint">{{ calories.sugar }} kcal/g</span>
-          </label>
-          <div class="input-with-unit">
-            <input
-              id="sugar-input"
-              v-model="form.sugar"
-              type="number"
-              min="0"
-              placeholder="0"
-              class="form-input"
-            >
-            <span class="unit">g</span>
-          </div>
-        </div>
+      <main>
+        <div class="calculator-container">
+          <section class="ingredients-section">
+            <h2>Your Coffee Ingredients</h2>
+            
+            <div class="ingredients-grid">
+              <div class="ingredient-card">
+                <div class="ingredient-header">
+                  <span class="ingredient-name">Milk (3.5%)</span>
+                  <span class="calorie-info">{{ calories.milk }} kcal/g</span>
+                </div>
+                <div class="input-container">
+                  <input
+                    id="milk-input"
+                    v-model="form.milk"
+                    type="number"
+                    min="0"
+                    placeholder="0"
+                    class="ingredient-input"
+                  >
+                  <span class="unit-label">g</span>
+                </div>
+              </div>
 
-        <button class="reset-button" @click="resetForm">Reset</button>
-      </div>
+              <div class="ingredient-card">
+                <div class="ingredient-header">
+                  <span class="ingredient-name">Cream (30%)</span>
+                  <span class="calorie-info">{{ calories.cream }} kcal/g</span>
+                </div>
+                <div class="input-container">
+                  <input
+                    id="cream-input"
+                    v-model="form.cream"
+                    type="number"
+                    min="0"
+                    placeholder="0"
+                    class="ingredient-input"
+                  >
+                  <span class="unit-label">g</span>
+                </div>
+              </div>
+              
+              <div class="ingredient-card">
+                <div class="ingredient-header">
+                  <span class="ingredient-name">Oat Milk</span>
+                  <span class="calorie-info">{{ calories.oatmilk }} kcal/g</span>
+                </div>
+                <div class="input-container">
+                  <input
+                    id="oatmilk-input"
+                    v-model="form.oatmilk"
+                    type="number"
+                    min="0"
+                    placeholder="0"
+                    class="ingredient-input"
+                  >
+                  <span class="unit-label">g</span>
+                </div>
+              </div>
+              
+              <div class="ingredient-card">
+                <div class="ingredient-header">
+                  <span class="ingredient-name">Sugar</span>
+                  <span class="calorie-info">{{ calories.sugar }} kcal/g</span>
+                </div>
+                <div class="input-container">
+                  <input
+                    id="sugar-input"
+                    v-model="form.sugar"
+                    type="number"
+                    min="0"
+                    placeholder="0"
+                    class="ingredient-input"
+                  >
+                  <span class="unit-label">g</span>
+                </div>
+              </div>
+            </div>
 
-      <div class="card result-card">
-        <div class="result-header">Total Calories</div>
-        <div class="result-value">{{ totalCal }}</div>
-        <div class="result-unit">kcal</div>
-      </div>
-    </main>
+            <button class="reset-button" @click="resetForm">
+              <span class="reset-icon">↺</span> Reset
+            </button>
+          </section>
+
+          <section class="results-section">
+            <div class="results-display">
+              <div class="results-label">Total Calories</div>
+              <div class="results-value">{{ totalCal }}</div>
+              <div class="results-unit">kcal</div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="copyright">
+          © {{ currentYear }} <span class="author">oglimmer</span>
+        </div>
+      </footer>
+    </div>
   </div>
 </template>
 
-<style scoped>
-/* Modern Color Palette */
+<style>
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Modern Coffee-themed Color Palette */
 :root {
-  --primary: #6a3e37;
-  --primary-light: #8a5a52;
-  --secondary: #d4a26a;
-  --light: #f5f0e8;
-  --dark: #2c2723;
+  --primary: #774936;
+  --primary-light: #9a7b69;
+  --primary-dark: #5c3828;
+  --secondary: #c8a087;
+  --accent: #e6ccb2;
+  --background: #f8f1e9;
+  --text: #33272a;
+  --text-light: #7d7169;
   --white: #ffffff;
-  --gray: #f0f0f0;
-  --gray-dark: #d1d1d1;
-  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow: rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 8px 20px var(--shadow);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  /* Font Sizes */
+  --fs-small: 0.875rem;
+  --fs-medium: 1rem;
+  --fs-large: 1.25rem;
+  --fs-xlarge: 1.5rem;
+  --fs-xxlarge: 2.5rem;
+}
+
+/* Typography */
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  font-size: var(--fs-medium);
+  background-color: var(--background);
+}
+
+/* Page Structure */
+.page-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+  background-color: var(--background);
 }
 
 .app-container {
-  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  color: var(--dark);
-  background-color: var(--light);
-  min-height: 100vh;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem;
 }
 
+/* Header Styles */
 .header {
+  padding: 2rem 0 1.5rem;
+}
+
+.logo {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--secondary);
+  gap: 1rem;
+}
+
+.logo-icon {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
+  font-size: var(--fs-xlarge);
+  font-weight: 700;
   color: var(--primary);
-  margin: 0;
 }
 
-.coffee-icon {
-  font-size: 2rem;
+/* Main Content */
+main {
+  flex: 1;
+  margin-bottom: 2rem;
 }
 
-.main-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.calculator-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
-.card {
-  background: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px var(--shadow);
+/* Ingredients Section */
+.ingredients-section {
+  background-color: var(--white);
+  border-radius: 1rem;
   padding: 1.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--card-shadow);
 }
 
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px var(--shadow);
-}
-
-.ingredients-card h2 {
-  font-size: 1.4rem;
-  color: var(--primary);
-  margin-top: 0;
-  margin-bottom: 1.5rem;
+.ingredients-section h2 {
+  font-size: var(--fs-large);
   font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.75rem;
 }
 
-.form-group {
-  margin-bottom: 1.2rem;
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-label {
+.ingredient-card {
+  background-color: var(--background);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  transition: var(--transition);
+}
+
+.ingredient-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.ingredient-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
 }
 
 .ingredient-name {
-  color: var(--dark);
+  font-weight: 500;
+  color: var(--text);
 }
 
-.calorie-hint {
-  font-size: 0.8rem;
-  color: var(--primary-light);
-  font-weight: 400;
+.calorie-info {
+  font-size: var(--fs-small);
+  color: var(--text-light);
 }
 
-.input-with-unit {
+.input-container {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
-.form-input {
+.ingredient-input {
   width: 100%;
-  padding: 0.8rem 2rem 0.8rem 1rem;
-  border: 1px solid var(--gray-dark);
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  padding: 0.75rem 2rem 0.75rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  font-size: var(--fs-medium);
+  transition: var(--transition);
+  background-color: var(--white);
 }
 
-.form-input:focus {
+.ingredient-input:focus {
   outline: none;
   border-color: var(--secondary);
-  box-shadow: 0 0 0 3px rgba(212, 162, 106, 0.2);
+  box-shadow: 0 0 0 3px rgba(200, 160, 135, 0.2);
 }
 
-.unit {
+.unit-label {
   position: absolute;
-  right: 12px;
-  color: var(--primary-light);
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
   pointer-events: none;
 }
 
 .reset-button {
-  background-color: var(--gray);
-  color: var(--primary);
+  background-color: var(--primary-light);
+  color: var(--white);
   border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: var(--fs-medium);
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
-  margin-top: 1rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 .reset-button:hover {
-  background-color: var(--gray-dark);
+  background-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.result-card {
-  background: linear-gradient(to right bottom, var(--primary), var(--primary-light));
+.reset-icon {
+  font-size: 1.1rem;
+}
+
+/* Results Section */
+.results-section {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
   color: var(--white);
   text-align: center;
-  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.result-header {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+.results-label {
+  font-size: var(--fs-large);
   opacity: 0.9;
+  font-weight: 500;
 }
 
-.result-value {
-  font-size: 3rem;
+.results-value {
+  font-size: var(--fs-xxlarge);
   font-weight: 700;
-  margin: 0.5rem 0;
+  margin: 1rem 0 0.5rem;
 }
 
-.result-unit {
-  font-size: 1.2rem;
-  opacity: 0.9;
+.results-unit {
+  font-size: var(--fs-medium);
+  opacity: 0.8;
 }
 
+/* Footer Styles */
+.footer {
+  padding: 1.5rem 0;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: auto;
+}
+
+.copyright {
+  font-size: var(--fs-small);
+  color: var(--text-light);
+}
+
+.author {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* Responsive Design */
 @media (min-width: 768px) {
-  .main-content {
-    flex-direction: row;
+  .calculator-container {
+    grid-template-columns: 2fr 1fr;
   }
   
-  .ingredients-card {
-    flex: 2;
+  h1 {
+    font-size: var(--fs-xxlarge);
   }
   
-  .result-card {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .results-section {
+    height: 100%;
   }
+}
+
+/* Remove input number arrows */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
 </style>
