@@ -5,14 +5,16 @@ const form = reactive({
   milk: '0',
   cream: '0',
   sugar: '0',
-  oatmilk: '0'
+  oatmilk: '0',
+  vanillaErbsendrink: '0'
 })
 
 const totalCal = computed(() => {
-  const total = (parseFloat(form.oatmilk) * 0.61) + 
-                (parseFloat(form.milk) * 0.66744) + 
-                (parseFloat(form.cream) * 2.92) + 
-                (parseFloat(form.sugar) * 3.87)
+  const total = (parseFloat(form.oatmilk) * 0.61) +
+                (parseFloat(form.milk) * 0.66744) +
+                (parseFloat(form.cream) * 2.92) +
+                (parseFloat(form.sugar) * 3.87) +
+                (parseFloat(form.vanillaErbsendrink) * 0.40)
   return isNaN(total) ? 0 : total.toFixed(1)
 })
 
@@ -20,7 +22,8 @@ const calories = {
   milk: 0.67,
   cream: 2.92,
   oatmilk: 0.61,
-  sugar: 3.87
+  sugar: 3.87,
+  vanillaErbsendrink: 0.40
 }
 
 function resetForm() {
@@ -28,6 +31,7 @@ function resetForm() {
   form.cream = '0'
   form.sugar = '0'
   form.oatmilk = '0'
+  form.vanillaErbsendrink = '0'
 }
 
 // Get current year for copyright
@@ -113,6 +117,24 @@ const currentYear = new Date().getFullYear()
                   <input
                     id="sugar-input"
                     v-model="form.sugar"
+                    type="number"
+                    min="0"
+                    placeholder="0"
+                    class="ingredient-input"
+                  >
+                  <span class="unit-label">g</span>
+                </div>
+              </div>
+
+              <div class="ingredient-card">
+                <div class="ingredient-header">
+                  <span class="ingredient-name">Vanilla Erbsendrink</span>
+                  <span class="calorie-info">{{ calories.vanillaErbsendrink }} kcal/g</span>
+                </div>
+                <div class="input-container">
+                  <input
+                    id="vanillaErbsendrink-input"
+                    v-model="form.vanillaErbsendrink"
                     type="number"
                     min="0"
                     placeholder="0"
