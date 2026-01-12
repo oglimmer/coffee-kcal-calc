@@ -292,6 +292,9 @@ main {
   border-radius: 0.75rem;
   padding: 1rem;
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .ingredient-card:hover {
@@ -304,11 +307,14 @@ main {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.25rem;
 }
 
 .ingredient-name {
   font-weight: 500;
   color: var(--text);
+  white-space: nowrap;
 }
 
 .calorie-info {
