@@ -1,0 +1,22 @@
+{
+  "title": "Coffee Calorie Calculator",
+  "ingredients": {
+    "heading": "Your Coffee Ingredients",
+    "milk": "Milk (3.5%)",
+    "cream": "Cream (30%)",
+    "oatMilk": "Oat Milk",
+    "sugar": "Sugar",
+    "vanillaPeaDrink": "Vanilla Pea Drink"
+  },
+  "units": {
+    "gram": "g",
+    "kcalPerGram": "kcal/g",
+    "kcal": "kcal"
+  },
+  "results": {
+    "totalCalories": "Total Calories"
+  },
+  "actions": {
+    "reset": "Reset"
+  }
+}

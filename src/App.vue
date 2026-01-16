@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { setLocale, availableLocales } from './i18n'
+
+const { t, locale } = useI18n()
 
 const form = reactive({
   milk: '0',
@@ -36,6 +40,11 @@ function resetForm() {
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear()
+
+function changeLocale(event: Event) {
+  const target = event.target as HTMLSelectElement
+  setLocale(target.value)
+}
 </script>
 
 <template>
@@ -44,20 +53,27 @@ const currentYear = new Date().getFullYear()
       <header class="header">
         <div class="logo">
           <div class="logo-icon">☕</div>
-          <h1>Coffee Calorie Calculator</h1>
+          <h1>{{ t('title') }}</h1>
+        </div>
+        <div class="language-switcher">
+          <select :value="locale" @change="changeLocale" class="language-select">
+            <option v-for="lang in availableLocales" :key="lang.code" :value="lang.code">
+              {{ lang.name }}
+            </option>
+          </select>
         </div>
       </header>
 
       <main>
         <div class="calculator-container">
           <section class="ingredients-section">
-            <h2>Your Coffee Ingredients</h2>
+            <h2>{{ t('ingredients.heading') }}</h2>
             
             <div class="ingredients-grid">
               <div class="ingredient-card">
                 <div class="ingredient-header">
-                  <span class="ingredient-name">Milk (3.5%)</span>
-                  <span class="calorie-info">{{ calories.milk }} kcal/g</span>
+                  <span class="ingredient-name">{{ t('ingredients.milk') }}</span>
+                  <span class="calorie-info">{{ calories.milk }} {{ t('units.kcalPerGram') }}</span>
                 </div>
                 <div class="input-container">
                   <input
@@ -68,14 +84,14 @@ const currentYear = new Date().getFullYear()
                     placeholder="0"
                     class="ingredient-input"
                   >
-                  <span class="unit-label">g</span>
+                  <span class="unit-label">{{ t('units.gram') }}</span>
                 </div>
               </div>
 
               <div class="ingredient-card">
                 <div class="ingredient-header">
-                  <span class="ingredient-name">Cream (30%)</span>
-                  <span class="calorie-info">{{ calories.cream }} kcal/g</span>
+                  <span class="ingredient-name">{{ t('ingredients.cream') }}</span>
+                  <span class="calorie-info">{{ calories.cream }} {{ t('units.kcalPerGram') }}</span>
                 </div>
                 <div class="input-container">
                   <input
@@ -86,14 +102,14 @@ const currentYear = new Date().getFullYear()
                     placeholder="0"
                     class="ingredient-input"
                   >
-                  <span class="unit-label">g</span>
+                  <span class="unit-label">{{ t('units.gram') }}</span>
                 </div>
               </div>
               
               <div class="ingredient-card">
                 <div class="ingredient-header">
-                  <span class="ingredient-name">Oat Milk</span>
-                  <span class="calorie-info">{{ calories.oatmilk }} kcal/g</span>
+                  <span class="ingredient-name">{{ t('ingredients.oatMilk') }}</span>
+                  <span class="calorie-info">{{ calories.oatmilk }} {{ t('units.kcalPerGram') }}</span>
                 </div>
                 <div class="input-container">
                   <input
@@ -104,14 +120,14 @@ const currentYear = new Date().getFullYear()
                     placeholder="0"
                     class="ingredient-input"
                   >
-                  <span class="unit-label">g</span>
+                  <span class="unit-label">{{ t('units.gram') }}</span>
                 </div>
               </div>
               
               <div class="ingredient-card">
                 <div class="ingredient-header">
-                  <span class="ingredient-name">Sugar</span>
-                  <span class="calorie-info">{{ calories.sugar }} kcal/g</span>
+                  <span class="ingredient-name">{{ t('ingredients.sugar') }}</span>
+                  <span class="calorie-info">{{ calories.sugar }} {{ t('units.kcalPerGram') }}</span>
                 </div>
                 <div class="input-container">
                   <input
@@ -122,14 +138,14 @@ const currentYear = new Date().getFullYear()
                     placeholder="0"
                     class="ingredient-input"
                   >
-                  <span class="unit-label">g</span>
+                  <span class="unit-label">{{ t('units.gram') }}</span>
                 </div>
               </div>
 
               <div class="ingredient-card">
                 <div class="ingredient-header">
-                  <span class="ingredient-name">Vanilla Erbsendrink</span>
-                  <span class="calorie-info">{{ calories.vanillaErbsendrink }} kcal/g</span>
+                  <span class="ingredient-name">{{ t('ingredients.vanillaPeaDrink') }}</span>
+                  <span class="calorie-info">{{ calories.vanillaErbsendrink }} {{ t('units.kcalPerGram') }}</span>
                 </div>
                 <div class="input-container">
                   <input
@@ -140,21 +156,21 @@ const currentYear = new Date().getFullYear()
                     placeholder="0"
                     class="ingredient-input"
                   >
-                  <span class="unit-label">g</span>
+                  <span class="unit-label">{{ t('units.gram') }}</span>
                 </div>
               </div>
             </div>
 
             <button class="reset-button" @click="resetForm">
-              <span class="reset-icon">↺</span> Reset
+              <span class="reset-icon">↺</span> {{ t('actions.reset') }}
             </button>
           </section>
 
           <section class="results-section">
             <div class="results-display">
-              <div class="results-label">Total Calories</div>
+              <div class="results-label">{{ t('results.totalCalories') }}</div>
               <div class="results-value">{{ totalCal }}</div>
-              <div class="results-unit">kcal</div>
+              <div class="results-unit">{{ t('units.kcal') }}</div>
             </div>
           </section>
         </div>
@@ -230,12 +246,44 @@ body {
 /* Header Styles */
 .header {
   padding: 2rem 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+}
+
+.language-select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--secondary);
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  color: var(--text);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.language-select:hover {
+  border-color: var(--primary);
+}
+
+.language-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(200, 160, 135, 0.2);
 }
 
 .logo-icon {

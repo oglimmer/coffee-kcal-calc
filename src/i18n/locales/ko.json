@@ -1,0 +1,22 @@
+{
+  "title": "커피 칼로리 계산기",
+  "ingredients": {
+    "heading": "커피 재료",
+    "milk": "우유 (3.5%)",
+    "cream": "크림 (30%)",
+    "oatMilk": "귀리 우유",
+    "sugar": "설탕",
+    "vanillaPeaDrink": "바닐라 완두 음료"
+  },
+  "units": {
+    "gram": "g",
+    "kcalPerGram": "kcal/g",
+    "kcal": "kcal"
+  },
+  "results": {
+    "totalCalories": "총 칼로리"
+  },
+  "actions": {
+    "reset": "초기화"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Calculadora de Calorías del Café",
+  "ingredients": {
+    "heading": "Tus Ingredientes de Café",
+    "milk": "Leche (3,5%)",
+    "cream": "Nata (30%)",
+    "oatMilk": "Leche de Avena",
+    "sugar": "Azúcar",
+    "vanillaPeaDrink": "Guisante vainilla"
+  },
+  "units": {
+    "gram": "g",
+    "kcalPerGram": "kcal/g",
+    "kcal": "kcal"
+  },
+  "results": {
+    "totalCalories": "Calorías Totales"
+  },
+  "actions": {
+    "reset": "Restablecer"
+  }
+}

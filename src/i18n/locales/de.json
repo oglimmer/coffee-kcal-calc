@@ -1,0 +1,22 @@
+{
+  "title": "Kaffee-Kalorienrechner",
+  "ingredients": {
+    "heading": "Deine Kaffee-Zutaten",
+    "milk": "Milch (3,5%)",
+    "cream": "Sahne (30%)",
+    "oatMilk": "Hafermilch",
+    "sugar": "Zucker",
+    "vanillaPeaDrink": "Vanille-Erbsendrink"
+  },
+  "units": {
+    "gram": "g",
+    "kcalPerGram": "kcal/g",
+    "kcal": "kcal"
+  },
+  "results": {
+    "totalCalories": "Gesamtkalorien"
+  },
+  "actions": {
+    "reset": "Zurücksetzen"
+  }
+}

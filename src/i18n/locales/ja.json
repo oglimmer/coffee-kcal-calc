@@ -1,0 +1,22 @@
+{
+  "title": "コーヒーカロリー計算機",
+  "ingredients": {
+    "heading": "コーヒーの材料",
+    "milk": "牛乳 (3.5%)",
+    "cream": "クリーム (30%)",
+    "oatMilk": "オーツミルク",
+    "sugar": "砂糖",
+    "vanillaPeaDrink": "バニラエンドウ豆ドリンク"
+  },
+  "units": {
+    "gram": "g",
+    "kcalPerGram": "kcal/g",
+    "kcal": "kcal"
+  },
+  "results": {
+    "totalCalories": "合計カロリー"
+  },
+  "actions": {
+    "reset": "リセット"
+  }
+}

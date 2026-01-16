@@ -1,0 +1,22 @@
+{
+  "title": "Calculateur de Calories du Café",
+  "ingredients": {
+    "heading": "Vos Ingrédients de Café",
+    "milk": "Lait (3,5%)",
+    "cream": "Crème (30%)",
+    "oatMilk": "Lait d'Avoine",
+    "sugar": "Sucre",
+    "vanillaPeaDrink": "Pois vanille"
+  },
+  "units": {
+    "gram": "g",
+    "kcalPerGram": "kcal/g",
+    "kcal": "kcal"
+  },
+  "results": {
+    "totalCalories": "Calories Totales"
+  },
+  "actions": {
+    "reset": "Réinitialiser"
+  }
+}
